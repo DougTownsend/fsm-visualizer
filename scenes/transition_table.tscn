@@ -1,0 +1,49 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/transition_table.gd" id="1_table"]
+
+[node name="TransitionTable" type="VBoxContainer"]
+script = ExtResource("1_table")
+
+[node name="TitleRow" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="TitleRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "State Transition Table"
+
+[node name="CopyButton" type="Button" parent="TitleRow"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Copy the table to the clipboard as a PNG
+(black on white, without simulation highlighting)"
+text = "Copy table"
+
+[node name="Caption" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_font_sizes/font_size = 13
+text = "Moore: next state for each input in0, then the state's outputs."
+
+[node name="EmptyLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+text = "No states yet. Press \"Add State\" to create one."
+
+[node name="Grid" type="GridContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/h_separation = 2
+theme_override_constants/v_separation = 2
+columns = 3
+
+[node name="AddStateButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+text = "+ Add State"

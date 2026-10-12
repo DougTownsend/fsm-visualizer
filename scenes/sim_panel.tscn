@@ -1,0 +1,92 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/sim_panel.gd" id="1_sim"]
+
+[node name="SimPanel" type="VBoxContainer"]
+script = ExtResource("1_sim")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Simulation"
+
+[node name="Body" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="Inputs" type="VBoxContainer" parent="Body"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Body/Inputs"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.75, 0.9, 1)
+text = "Inputs"
+
+[node name="InputRows" type="VBoxContainer" parent="Body/Inputs"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="Body"]
+layout_mode = 2
+
+[node name="Status" type="VBoxContainer" parent="Body"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+
+[node name="StateLabel" type="Label" parent="Body/Status"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "State: —"
+
+[node name="NextLabel" type="Label" parent="Body/Status"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Next on clock: —"
+
+[node name="OutputLabel" type="Label" parent="Body/Status"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Outputs: —"
+
+[node name="Buttons" type="HBoxContainer" parent="Body/Status"]
+layout_mode = 2
+
+[node name="ClockButton" type="Button" parent="Body/Status/Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+tooltip_text = "Apply one clock edge: move to the next state for the current input."
+text = "Clock"
+
+[node name="ResetButton" type="Button" parent="Body/Status/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Go back to the initial state and clear the history."
+text = "Reset"
+
+[node name="ErrorLabel" type="Label" parent="Body/Status"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "error"
+autowrap_mode = 3
+
+[node name="VSeparator2" type="VSeparator" parent="Body"]
+layout_mode = 2
+
+[node name="HistoryBox" type="VBoxContainer" parent="Body"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Body/HistoryBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.75, 0.9, 1)
+text = "History"
+
+[node name="History" type="Tree" parent="Body/HistoryBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3

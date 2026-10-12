@@ -1,0 +1,24 @@
+# Godot 4+ specific ignores
+# (.godot/ also holds export_credentials.cfg, so signing secrets stay out of git)
+.godot/
+/android/
+
+# Export output (see export_path in export_presets.cfg)
+/build/
+
+# Godot-specific temp/crash files
+*.tmp
+*.translation
+mono_crash.*.json
+
+# GUT test output
+/test/results*.xml
+.gut_editor_*
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*~
+*.swp
+.vscode/
+.idea/

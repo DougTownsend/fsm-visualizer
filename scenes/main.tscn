@@ -1,0 +1,87 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_main"]
+[ext_resource type="PackedScene" path="res://scenes/toolbar.tscn" id="2_toolbar"]
+[ext_resource type="Script" path="res://scenes/graph_view.gd" id="3_graph"]
+[ext_resource type="PackedScene" path="res://scenes/port_editor.tscn" id="4_ports"]
+[ext_resource type="PackedScene" path="res://scenes/transition_table.tscn" id="5_table"]
+[ext_resource type="PackedScene" path="res://scenes/sim_panel.tscn" id="6_sim"]
+
+[node name="Main" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_main")
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Layout" type="VBoxContainer" parent="Margin"]
+layout_mode = 2
+
+[node name="Toolbar" parent="Margin/Layout" instance=ExtResource("2_toolbar")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VSplit" type="VSplitContainer" parent="Margin/Layout"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HSplit" type="HSplitContainer" parent="Margin/Layout/VSplit"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GraphView" type="Control" parent="Margin/Layout/VSplit/HSplit"]
+unique_name_in_owner = true
+clip_contents = true
+custom_minimum_size = Vector2(300, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("3_graph")
+
+[node name="RightPanel" type="VBoxContainer" parent="Margin/Layout/VSplit/HSplit"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PortEditor" parent="Margin/Layout/VSplit/HSplit/RightPanel" instance=ExtResource("4_ports")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="Margin/Layout/VSplit/HSplit/RightPanel"]
+layout_mode = 2
+
+[node name="TableScroll" type="ScrollContainer" parent="Margin/Layout/VSplit/HSplit/RightPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TransitionTable" parent="Margin/Layout/VSplit/HSplit/RightPanel/TableScroll" instance=ExtResource("5_table")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SimPanel" parent="Margin/Layout/VSplit" instance=ExtResource("6_sim")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 190)
+layout_mode = 2
+
+[node name="FileDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+access = 2
+filters = PackedStringArray("*.tres ; FSM files")
+
+[node name="ConfirmNewDialog" type="ConfirmationDialog" parent="."]
+unique_name_in_owner = true
+title = "New machine"
+dialog_text = "Discard the current machine and start a new one?
+(Unsaved changes will be lost.)"
+
+[node name="MessageDialog" type="AcceptDialog" parent="."]
+unique_name_in_owner = true

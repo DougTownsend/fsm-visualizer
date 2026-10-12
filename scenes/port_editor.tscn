@@ -1,0 +1,66 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/port_editor.gd" id="1_ports"]
+
+[node name="PortEditor" type="VBoxContainer"]
+script = ExtResource("1_ports")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Ports"
+
+[node name="Columns" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Inputs" type="VBoxContainer" parent="Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Header" type="HBoxContainer" parent="Columns/Inputs"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Columns/Inputs/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Inputs"
+
+[node name="AddInputButton" type="Button" parent="Columns/Inputs/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "+ Input"
+
+[node name="InputRows" type="VBoxContainer" parent="Columns/Inputs"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="InputBitsLabel" type="Label" parent="Columns/Inputs"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "1 of 4 input bits used"
+
+[node name="VSeparator" type="VSeparator" parent="Columns"]
+layout_mode = 2
+
+[node name="Outputs" type="VBoxContainer" parent="Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Header" type="HBoxContainer" parent="Columns/Outputs"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Columns/Outputs/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Outputs"
+
+[node name="AddOutputButton" type="Button" parent="Columns/Outputs/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "+ Output"
+
+[node name="OutputRows" type="VBoxContainer" parent="Columns/Outputs"]
+unique_name_in_owner = true
+layout_mode = 2
